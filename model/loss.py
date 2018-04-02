@@ -15,6 +15,9 @@ def focalLoss(y_true,y_pred,alpha=2):
     loss = -K.mean(loss)
     return loss
 
+
+
+
 def rankLoss(y_true,y_pred,batchsize = 256):
     """
     :param y_true:     1  or  0
@@ -22,11 +25,11 @@ def rankLoss(y_true,y_pred,batchsize = 256):
     :param batchsize:
     """
 
-    y = K.expand_dims(y_true,axis=1)    # [batch] -> [batch,1]
+    y = K.reshape(y_true,(-1,1))    # [batch] -> [batch,1]
     y = K.repeat_elements(y,batchsize,1)          #  [batch,1] -> [batch,batch]
     y = y - K.transpose(y)
 
-    x = K.expand_dims(y_pred[:, i], axis=1)  # [batch] -> [batch,1]
+    x = K.reshape(y_pred,(-1,1))  # [batch] -> [batch,1]
     x = K.repeat_elements(x,batchsize, 1)  # [batch,1] -> [batch,batch]
     x = x - K.transpose(x)
 

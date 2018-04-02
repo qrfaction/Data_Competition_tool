@@ -7,7 +7,7 @@ def co_prob(dataset,cols,feature_name,normilize=False,return_col=False):
     :param cols:          list  cols   or str
     :param dataset:    pandas Dataframe
     """
-    if type(cols) == str :
+    if isinstance(cols,str) :
         cols = [cols]
     X = dataset[cols]
     X[feature_name] = range(len(dataset))
@@ -26,9 +26,9 @@ def condition_prob(dataset,Y,X,feature_name,return_col=False):
     :param X:           list cols  or  str col
     :param dataset:     pandas Dataframe
     """
-    if type(Y) == str:
+    if isinstance(Y,str):
         Y = [Y]
-    if type(X) == str:
+    if isinstance(Y,str):
         X = [X]
     XY = X + Y
     prob_x = co_prob(X,dataset,'prob_x',return_col=True)
