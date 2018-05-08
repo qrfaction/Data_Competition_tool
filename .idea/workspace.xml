@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f72229f-29fe-48ef-94e0-f0b949629732" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ensemble/IterEnsemble.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/loss.py" afterPath="$PROJECT_DIR$/model/loss.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/feature/feature.py" afterPath="$PROJECT_DIR$/feature/feature.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,22 +18,16 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="loss.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/loss.py">
+      <file leaf-file-name="feature.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/feature/feature.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="6" column="12" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IterEnsemble.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ensemble/IterEnsemble.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="41" column="25" lean-forward="false" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
-              <folding />
+            <state relative-caret-position="-140">
+              <caret line="92" column="7" lean-forward="false" selection-start-line="92" selection-start-column="7" selection-end-line="92" selection-end-column="7" />
+              <folding>
+                <element signature="e#117#625#0" expanded="false" />
+                <element signature="e#694#1228#0" expanded="false" />
+                <element signature="e#1306#2401#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -60,10 +52,10 @@
         <option value="$PROJECT_DIR$/normalize/normalize.py" />
         <option value="$PROJECT_DIR$/prepocess/norm.py" />
         <option value="$PROJECT_DIR$/prepocess/normlize.py" />
-        <option value="$PROJECT_DIR$/feature/feature.py" />
         <option value="$PROJECT_DIR$/model/layer.py" />
         <option value="$PROJECT_DIR$/model/loss.py" />
         <option value="$PROJECT_DIR$/ensemble/IterEnsemble.py" />
+        <option value="$PROJECT_DIR$/feature/feature.py" />
       </list>
     </option>
   </component>
@@ -403,7 +395,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2797282" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2797282" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -516,13 +508,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../divide_tool.py" />
-    <entry file="file://$PROJECT_DIR$/feature/feature.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="3" column="72" lean-forward="false" selection-start-line="3" selection-start-column="72" selection-end-line="3" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/prepocess/normlize.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -537,6 +522,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ensemble/IterEnsemble.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="820">
+          <caret line="41" column="25" lean-forward="false" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/model/loss.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -545,11 +538,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ensemble/IterEnsemble.py">
+    <entry file="file://$PROJECT_DIR$/feature/feature.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="41" column="25" lean-forward="false" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
-          <folding />
+        <state relative-caret-position="-140">
+          <caret line="92" column="7" lean-forward="false" selection-start-line="92" selection-start-column="7" selection-end-line="92" selection-end-column="7" />
+          <folding>
+            <element signature="e#117#625#0" expanded="false" />
+            <element signature="e#694#1228#0" expanded="false" />
+            <element signature="e#1306#2401#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

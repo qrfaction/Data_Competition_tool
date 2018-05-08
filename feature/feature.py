@@ -75,14 +75,48 @@ def distance(dataset,colx,coly,feature_name,get_dist,return_col=False):
         return dataset[feature_name]
     return dataset
 
-def expression(exp):
-    pass
+def num2bin(dataset,cols,num_bins):
 
-# x1 = list('hellooh')
-# x2 = list('aabbccd')
-# y = list('padscpp')
-#
-# data = list(zip(x1,x2,y))
-# data = pd.DataFrame(data,columns=['x1','x2','y'])
-#
-# condition_prob(['y'],['x1','x2'],data,'pxy')
+    if isinstance(cols,str):
+        dataset[cols + '_bin'] = pd.cut(dataset[cols], num_bins,
+                                labels=['bin' + str(i) for i in range(num_bins)])
+    for col in cols:
+        dataset[col+'_bin'] = pd.cut(dataset[col],num_bins,
+                                labels=['bin'+str(i) for i in range(num_bins)])
+    return dataset
+
+def expr_calc(dataset,expr,feature_name,return_col=False):
+    """
+    :param expr:
+    1. 要求运算符与列名用之间用空格隔开   如  ((2* colx + coly *2))
+    2. 所有运算符与python的运算符相同  如指数 **
+    """
+    expr_list = expr.split()
+
+    for i in range(len(expr_list)):
+        op = expr_list[i]
+        if op.isdigit():
+            continue
+        elif '(' in op:
+            continue
+        elif ')' in op:
+            continue
+        elif '+' in op:
+            continue
+        elif '-' in op:
+            continue
+        elif '*' in op:
+            continue
+        elif '/' in op:
+            continue
+        expr_list[i] = 'dataset["'+op+'"]'
+
+    expr = ' '.join(expr_list)
+
+    col = exec(expr)
+    if return_col:
+        return col
+    dataset[feature_name] = exec(expr)
+    return dataset
+
+
