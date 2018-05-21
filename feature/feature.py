@@ -119,4 +119,25 @@ def expr_calc(dataset,expr,feature_name,return_col=False):
     dataset[feature_name] = exec(expr)
     return dataset
 
+def condition_stat(dataset,target_col,cols,feature_name,stat_f,return_col=False):
+
+    if isinstance(cols,str) :
+        cols = [cols]
+    cols = list(cols)
+    X = dataset[[target_col]+cols]
+
+    if stat_f == 'mean':
+        X = X.groupby(by=cols, as_index=False).aggregate({target_col:'mean'})
+    elif stat_f == 'std':
+        X = X.groupby(by=cols, as_index=False).aggregate({target_col:'std'})
+    elif hasattr(stat_f, '__call__'):
+        X = X.groupby(by=cols, as_index=False).aggregate({target_col:stat_f})
+    # X = pd.DataFrame()
+    X = X.rename(columns={target_col:feature_name})
+
+
+    dataset = dataset.merge(right=X,how='left',on=cols)
+    if return_col:
+        return dataset[feature_name]
+    return dataset
 
