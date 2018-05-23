@@ -31,8 +31,8 @@ def condition_prob(dataset,Y,X,feature_name,return_col=False):
     if isinstance(Y,str):
         X = [X]
     XY = X + Y
-    prob_x = co_prob(X,dataset,'prob_x',return_col=True)
-    prob_xy = co_prob(XY, dataset,'prob_xy', return_col=True)
+    prob_x = co_prob(dataset,X,'prob_x',return_col=True)
+    prob_xy = co_prob(dataset,XY,'prob_xy', return_col=True)
     dataset[feature_name] = prob_xy/prob_x
 
     if return_col:
