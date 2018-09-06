@@ -1,18 +1,16 @@
 from keras import backend as K
 
 
-def focalLoss(y_true,y_pred,alpha=2):
-    weight1 = K.pow(1 - y_pred, alpha)
-    weight2 = K.pow(y_pred,alpha)
-    loss = y_true * K.log(y_pred) * weight1 +\
-        (1 - y_true) * K.log(1 - y_pred) * weight2
-    loss = -K.mean(loss)
-    return loss
+def focal_loss_fixed(y_true, y_pred,gamma=2, alpha=0.75):
+    z = K.sum(y_true) + K.sum(1-y_true)
+    pt_1 = tf.where(tf.less_equal(0.5,y_true), y_pred, tf.ones_like(y_pred))
+    pt_0 = tf.where(tf.less_equal(y_true, 0.5), y_pred, tf.zeros_like(y_pred))
+    pos_loss = -K.sum(alpha * K.pow(1. - pt_1, gamma) * K.log(pt_1))
+    neg_loss = -K.sum((1-alpha) * K.pow( pt_0, gamma) * K.log(1. - pt_0))
+    return (pos_loss+neg_loss)/z
 
 
-
-
-def rankLoss(y_true,y_pred,batchsize = 256):
+def rankLoss(y_true,y_pred):
     """
     :param y_true:     1  or  0
     :param y_pred:
@@ -20,11 +18,9 @@ def rankLoss(y_true,y_pred,batchsize = 256):
     """
 
     y = K.reshape(y_true,(-1,1))    # [batch] -> [batch,1]
-    y = K.repeat_elements(y,batchsize,1)          #  [batch,1] -> [batch,batch]
     y = y - K.transpose(y)
 
     x = K.reshape(y_pred,(-1,1))  # [batch] -> [batch,1]
-    x = K.repeat_elements(x,batchsize, 1)  # [batch,1] -> [batch,batch]
     x = x - K.transpose(x)
 
     label_y = K.pow(y,2)
@@ -43,6 +39,8 @@ def diceLoss(y_true, y_pred,smooth = 0):
     intersection = K.sum(y,axis=1)
     loss =  ( intersection + smooth) / (K.sum(y_true,axis=1) + K.sum(y_pred,axis=1) + smooth)
     return -2*K.mean(loss)
+
+
 
 
 
