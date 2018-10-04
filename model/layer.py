@@ -118,7 +118,28 @@ def top_k_pool(x,k):
     return output
 
 
+def top_k_ave(x,k):
+    def softmax(x, axis=1):
+        ex = K.exp(x - K.max(x, axis=axis, keepdims=True))
+        return ex / K.sum(ex, axis=axis, keepdims=True)
 
+    w = x[0]
+    feature = x[1]
+
+    top_k_w,idx = tf.nn.top_k(w,k,sorted=False)
+    top_k_w = softmax(top_k_w)
+    top_k_w = K.expand_dims(top_k_w,axis=1)
+    idx = K.expand_dims(idx, axis=2)
+
+    batch_size = tf.shape(feature)[0]
+    i_mat = tf.transpose(tf.reshape(tf.tile(tf.range(batch_size), [k]),
+                                    [k, batch_size]))
+    i_mat = K.expand_dims(i_mat,axis=2)
+    idx = K.concatenate([i_mat,idx],axis=2)
+    feature = tf.gather_nd(feature,idx)
+    output = K.batch_dot(top_k_w,feature)
+    output = K.squeeze(output,axis=1)
+    return output
 
 
 
