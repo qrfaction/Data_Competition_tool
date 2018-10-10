@@ -143,3 +143,29 @@ def top_k_ave(x,k):
 
 
 
+class norm_layer(Layer):
+
+    def __init__(self, weighted,axis, **kwargs):
+        self.weighted = weighted
+        self.axis = axis
+        super(norm_layer, self).__init__(**kwargs)
+
+    def build(self, input_shape):
+        self.gamma = self.add_weight(name='gamma',
+                                      shape=(1,),
+                                      initializer='ones',
+                                      trainable=True)
+        self.beta = self.add_weight(name='beta',
+                                     shape=(1,),
+                                     initializer='zeros',
+                                     trainable=True)
+        super(norm_layer, self).build(input_shape)  # Be sure to call this somewhere!
+
+    def call(self, x):
+        norm_x = (x - K.mean(x, axis=self.axis, keepdims=True)) / K.std(x, axis=self.axis, keepdims=True)
+        if self.weighted:
+            return self.gamma * norm_x + self.beta
+        return norm_x
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
